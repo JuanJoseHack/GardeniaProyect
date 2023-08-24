@@ -13,5 +13,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author juanjo
  */
 public interface ProductCrudRepository extends CrudRepository<ProductEntity, Integer>{
-    Iterable<ProductEntity>findByUserEntity(UserEntity user);
+    Iterable<ProductEntity>findByUserEntity(UserEntity userEntity);
 }

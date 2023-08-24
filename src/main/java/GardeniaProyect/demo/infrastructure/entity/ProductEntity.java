@@ -31,17 +31,6 @@ public class ProductEntity {
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
 
-    public ProductEntity(Integer id, String code, String name, String description, String image, BigDecimal price, UserEntity userEntity, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.image = image;
-        this.price = price;
-        this.userEntity = userEntity;
-        this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
-    }
 
     public Integer getId() {
         return id;
