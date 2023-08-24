@@ -12,7 +12,8 @@ import GardeniaProyect.demo.infrastructure.entity.UserEntity;
  *
  * @author juanjo
  */
-public class ProductService {
+
+public class ProductService{
     private final ProductRepository productRepository;
 
     public ProductService(ProductRepository productRepository) {
@@ -31,7 +32,7 @@ public class ProductService {
     public ProductEntity saveProduct(ProductEntity product){
         return productRepository.saveProduct(product);
     }
-    void deleteProductById(Integer id){
+    public void deleteProductById(Integer id){
         productRepository.deleteProductById(id);
     }
 }
