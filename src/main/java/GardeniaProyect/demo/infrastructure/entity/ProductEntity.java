@@ -32,6 +32,10 @@ public class ProductEntity {
     private LocalDateTime dateUpdated;
 
 
+    public ProductEntity() {
+        this.setCode(UUID.randomUUID().toString());
+    }
+     
     public Integer getId() {
         return id;
     }
@@ -104,10 +108,6 @@ public class ProductEntity {
         this.dateUpdated = dateUpdated;
     }
     
-    public ProductEntity() {
-        this.setCode(UUID.randomUUID().toString());
-    }
-
     @Override
     public String toString() {
         return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", userEntity=" + userEntity + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';

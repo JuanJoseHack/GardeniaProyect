@@ -33,7 +33,7 @@ public class UserEntity {
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String username, String firstname, String lastname, String email, String address, String cellphone, String password, LocalDateTime dateCreated) {
+    public UserEntity(Integer id, String username, String firstname, String lastname, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -43,8 +43,10 @@ public class UserEntity {
         this.cellphone = cellphone;
         this.password = password;
         this.dateCreated = dateCreated;
+        this.userType = userType;
     }
 
+ 
     public Integer getId() {
         return id;
     }
@@ -115,6 +117,14 @@ public class UserEntity {
 
     public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
     
 }
