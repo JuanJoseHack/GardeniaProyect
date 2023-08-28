@@ -5,50 +5,46 @@
 package GardeniaProyect.demo.infrastructure.entity;
 
 import jakarta.persistence.*;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 /**
  *
  * @author juanjo
  */
 @Entity
-@Table(name = "products")
-public class ProductEntity {
+@Table(name = "categories")
+public class CategoryEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String code;
+
+    private int id;
     private String name;
     private String description;
     private String image;
-    private BigDecimal price;
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private UserEntity userEntity;
+    private String relatedProducts;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
 
-    public ProductEntity() {
-        this.setCode(UUID.randomUUID().toString());
+    public CategoryEntity() {
     }
 
-    public Integer getId() {
+    public CategoryEntity(int id, String name, String description, String image, String relatedProducts, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.image = image;
+        this.relatedProducts = relatedProducts;
+        this.dateCreated = dateCreated;
+        this.dateUpdated = dateUpdated;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
     }
 
     public String getName() {
@@ -75,20 +71,12 @@ public class ProductEntity {
         this.image = image;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public String getRelatedProducts() {
+        return relatedProducts;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setRelatedProducts(String relatedProducts) {
+        this.relatedProducts = relatedProducts;
     }
 
     public LocalDateTime getDateCreated() {
@@ -109,7 +97,7 @@ public class ProductEntity {
 
     @Override
     public String toString() {
-        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", userEntity=" + userEntity + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
+        return "CategoryEntity{" + "id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", relatedProducts=" + relatedProducts + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
     }
-
+    
 }

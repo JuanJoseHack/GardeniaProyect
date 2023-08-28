@@ -9,5 +9,5 @@ package GardeniaProyect.demo.infrastructure.entity;
  * @author juanjo
  */
 public enum UserType {
-    ADMIN,USER
+    ADMIN, USER
 }

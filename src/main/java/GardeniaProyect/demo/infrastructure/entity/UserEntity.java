@@ -6,15 +6,16 @@ package GardeniaProyect.demo.infrastructure.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+
 /**
  *
  * @author juanjo
  */
 
-
 @Entity
-@Table (name = "users")
+@Table(name = "users")
 public class UserEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,7 +27,7 @@ public class UserEntity {
     private String cellphone;
     private String password;
     private LocalDateTime dateCreated;
-    
+
     @Enumerated(EnumType.STRING)
     private UserType userType;
 
@@ -46,7 +47,6 @@ public class UserEntity {
         this.userType = userType;
     }
 
- 
     public Integer getId() {
         return id;
     }
@@ -126,5 +126,5 @@ public class UserEntity {
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
-    
+
 }
