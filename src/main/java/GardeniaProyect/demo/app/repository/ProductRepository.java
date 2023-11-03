@@ -6,7 +6,7 @@ package GardeniaProyect.demo.app.repository;
 
 import GardeniaProyect.demo.infrastructure.entity.ProductEntity;
 import GardeniaProyect.demo.infrastructure.entity.UserEntity;
-import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author juanjo
@@ -23,3 +23,6 @@ public interface ProductRepository {
     //elimina los productos por id 
     void deleteProductById(Integer id);
 }
+
+
+

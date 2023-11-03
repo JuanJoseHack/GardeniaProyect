@@ -30,6 +30,10 @@ public class ProductEntity {
     private UserEntity userEntity;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
+    
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryEntity categoryEntity;
 
     public ProductEntity() {
         this.setCode(UUID.randomUUID().toString());
@@ -107,9 +111,16 @@ public class ProductEntity {
         this.dateUpdated = dateUpdated;
     }
 
-    @Override
-    public String toString() {
-        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", userEntity=" + userEntity + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", userEntity=" + userEntity + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + ", categoryEntity=" + categoryEntity + '}';
+    }
 }

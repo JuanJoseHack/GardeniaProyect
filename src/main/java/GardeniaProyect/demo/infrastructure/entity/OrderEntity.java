@@ -4,14 +4,20 @@
  */
 package GardeniaProyect.demo.infrastructure.entity;
 
-import jakarta.persistence.*;
-import java.math.BigDecimal;
-import java.sql.Date;
-import java.time.LocalDateTime;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import java.util.Date;
+import java.util.List;
 
 /**
  *
- * @author juanjo
+ * @author juanj
  */
 @Entity
 @Table(name = "orders")
@@ -19,147 +25,89 @@ public class OrderEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String number;
+    private Date creationDate;
+    private Date receivedDate;
+    private double total;
 
-    private int id;
-    private Date date;
-    private UserEntity userEntity;
-    private BigDecimal totalAmount;
-    private String status;
-    private Date deliveryDate;
-    private String shippingAddress;
-    private String paymentMethod;
-    private BigDecimal discount;
-    private BigDecimal taxes;
-    private String notes;
-    private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdated;
+    @ManyToOne
+    private UserEntity user;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDetailEntity> orderDetails;
 
     public OrderEntity() {
     }
 
-    public OrderEntity(int id, Date date, UserEntity userEntity, BigDecimal totalAmount, String status, Date deliveryDate, String shippingAddress, String paymentMethod, BigDecimal discount, BigDecimal taxes, String notes, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+    public OrderEntity(Integer id, String number, Date creationDate, Date receivedDate, double total, UserEntity user, List<OrderDetailEntity> orderDetails) {
         this.id = id;
-        this.date = date;
-        this.userEntity = userEntity;
-        this.totalAmount = totalAmount;
-        this.status = status;
-        this.deliveryDate = deliveryDate;
-        this.shippingAddress = shippingAddress;
-        this.paymentMethod = paymentMethod;
-        this.discount = discount;
-        this.taxes = taxes;
-        this.notes = notes;
-        this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
+        this.number = number;
+        this.creationDate = creationDate;
+        this.receivedDate = receivedDate;
+        this.total = total;
+        this.user = user;
+        this.orderDetails = orderDetails;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getNumber() {
+        return number;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public Date getCreationDate() {
+        return creationDate;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
     }
 
-    public BigDecimal getTotalAmount() {
-        return totalAmount;
+    public Date getReceivedDate() {
+        return receivedDate;
     }
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        this.totalAmount = totalAmount;
+    public void setReceivedDate(Date receivedDate) {
+        this.receivedDate = receivedDate;
     }
 
-    public String getStatus() {
-        return status;
+    public double getTotal() {
+        return total;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public Date getDeliveryDate() {
-        return deliveryDate;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setDeliveryDate(Date deliveryDate) {
-        this.deliveryDate = deliveryDate;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
+    public List<OrderDetailEntity> getOrderDetails() {
+        return orderDetails;
     }
 
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-
-    public BigDecimal getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(BigDecimal discount) {
-        this.discount = discount;
-    }
-
-    public BigDecimal getTaxes() {
-        return taxes;
-    }
-
-    public void setTaxes(BigDecimal taxes) {
-        this.taxes = taxes;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public LocalDateTime getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(LocalDateTime dateUpdated) {
-        this.dateUpdated = dateUpdated;
+    public void setOrderDetails(List<OrderDetailEntity> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     @Override
     public String toString() {
-        return "OrderEntity{" + "id=" + id + ", date=" + date + ", userEntity=" + userEntity + ", totalAmount=" + totalAmount + ", status=" + status + ", deliveryDate=" + deliveryDate + ", shippingAddress=" + shippingAddress + ", paymentMethod=" + paymentMethod + ", discount=" + discount + ", taxes=" + taxes + ", notes=" + notes + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
+        return "OrderEntity{" + "id=" + id + ", number=" + number + ", creationDate=" + creationDate + ", receivedDate=" + receivedDate + ", total=" + total + ", user=" + user + ", orderDetails=" + orderDetails + '}';
     }
-    
 }

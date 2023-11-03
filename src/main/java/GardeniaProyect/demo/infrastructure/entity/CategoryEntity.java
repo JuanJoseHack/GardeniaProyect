@@ -21,22 +21,18 @@ public class CategoryEntity {
     private int id;
     private String name;
     private String description;
-    private String image;
     private String relatedProducts;
     private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdated;
 
     public CategoryEntity() {
     }
 
-    public CategoryEntity(int id, String name, String description, String image, String relatedProducts, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+    public CategoryEntity(int id, String name, String description, String relatedProducts, LocalDateTime dateCreated) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.image = image;
         this.relatedProducts = relatedProducts;
         this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
     }
 
     public int getId() {
@@ -63,14 +59,6 @@ public class CategoryEntity {
         this.description = description;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getRelatedProducts() {
         return relatedProducts;
     }
@@ -87,17 +75,9 @@ public class CategoryEntity {
         this.dateCreated = dateCreated;
     }
 
-    public LocalDateTime getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(LocalDateTime dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     @Override
     public String toString() {
-        return "CategoryEntity{" + "id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + ", relatedProducts=" + relatedProducts + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
+        return "CategoryEntity{" + "id=" + id + ", name=" + name + ", description=" + description + ", relatedProducts=" + relatedProducts + ", dateCreated=" + dateCreated + '}';
     }
-    
+
 }

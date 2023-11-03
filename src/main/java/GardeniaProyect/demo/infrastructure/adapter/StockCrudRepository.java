@@ -5,14 +5,15 @@
 package GardeniaProyect.demo.infrastructure.adapter;
 
 import GardeniaProyect.demo.infrastructure.entity.ProductEntity;
-import GardeniaProyect.demo.infrastructure.entity.UserEntity;
+import GardeniaProyect.demo.infrastructure.entity.StockEntity;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author juanjo
+ * @author juanj
  */
-public interface ProductCrudRepository extends CrudRepository<ProductEntity, Integer>{
-    Iterable<ProductEntity>findByUserEntity(UserEntity userEntity);
-}
+public interface StockCrudRepository extends CrudRepository<StockEntity, Integer>{
+       List<StockEntity> getStockByProductEntity(ProductEntity productEntity);  
  
+}

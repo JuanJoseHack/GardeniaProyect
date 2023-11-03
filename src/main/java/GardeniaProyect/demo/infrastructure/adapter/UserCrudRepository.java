@@ -4,15 +4,12 @@
  */
 package GardeniaProyect.demo.infrastructure.adapter;
 
-import GardeniaProyect.demo.infrastructure.entity.ProductEntity;
 import GardeniaProyect.demo.infrastructure.entity.UserEntity;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author juanjo
+ * @author juanj
  */
-public interface ProductCrudRepository extends CrudRepository<ProductEntity, Integer>{
-    Iterable<ProductEntity>findByUserEntity(UserEntity userEntity);
+public interface UserCrudRepository extends CrudRepository<UserEntity, Integer>{
 }
- 

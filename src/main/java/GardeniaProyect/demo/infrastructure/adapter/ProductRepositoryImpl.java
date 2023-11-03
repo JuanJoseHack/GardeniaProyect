@@ -21,13 +21,12 @@ public class ProductRepositoryImpl implements ProductRepository{
         this.productCrudRepository = productCrudRepository;
     }
 
-   
     @Override
     public Iterable<ProductEntity> getProducts() {
         return productCrudRepository.findAll();
     }
 
-    @Override
+    @Override 
     public Iterable<ProductEntity> getProductsByUser(UserEntity user) {
         return productCrudRepository.findByUserEntity(user);
     }

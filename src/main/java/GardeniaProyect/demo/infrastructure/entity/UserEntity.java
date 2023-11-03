@@ -7,11 +7,11 @@ package GardeniaProyect.demo.infrastructure.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+
 /**
  *
  * @author juanjo
  */
-
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -20,31 +20,30 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String username;
-    private String firstname;
-    private String lastname;
+    private String firtName;
+    private String lastName;
     private String email;
     private String address;
     private String cellphone;
     private String password;
-    private LocalDateTime dateCreated;
-
     @Enumerated(EnumType.STRING)
     private UserType userType;
+    private LocalDateTime dateCreated;
 
     public UserEntity() {
     }
 
-    public UserEntity(Integer id, String username, String firstname, String lastname, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
+    public UserEntity(Integer id, String username, String firtName, String lastName, String email, String address, String cellphone, String password, UserType userType, LocalDateTime dateCreated) {
         this.id = id;
         this.username = username;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firtName = firtName;
+        this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.cellphone = cellphone;
         this.password = password;
-        this.dateCreated = dateCreated;
         this.userType = userType;
+        this.dateCreated = dateCreated;
     }
 
     public Integer getId() {
@@ -63,20 +62,20 @@ public class UserEntity {
         this.username = username;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirtName() {
+        return firtName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirtName(String firtName) {
+        this.firtName = firtName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -111,6 +110,14 @@ public class UserEntity {
         this.password = password;
     }
 
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
     public LocalDateTime getDateCreated() {
         return dateCreated;
     }
@@ -119,12 +126,9 @@ public class UserEntity {
         this.dateCreated = dateCreated;
     }
 
-    public UserType getUserType() {
-        return userType;
-    }
-
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    @Override
+    public String toString() {
+        return "UserEntity{" + "id=" + id + ", username=" + username + ", firtName=" + firtName + ", lastName=" + lastName + ", email=" + email + ", address=" + address + ", cellphone=" + cellphone + ", password=" + password + ", userType=" + userType + ", dateCreated=" + dateCreated + '}';
     }
 
 }

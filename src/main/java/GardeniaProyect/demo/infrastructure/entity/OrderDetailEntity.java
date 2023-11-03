@@ -4,151 +4,109 @@
  */
 package GardeniaProyect.demo.infrastructure.entity;
 
-import jakarta.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 /**
  *
- * @author juanjo
+ * @author juanj
  */
 @Entity
-@Table(name = "orderdetails")
+@Table(name = "order_details")
 public class OrderDetailEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String name;
+    private double quantity;
+    private double price;
+    private double total;
 
-    private int id;
-    private OrderEntity orderEntity;
-    private ProductEntity productEntity;
-    private int quantity;
-    private BigDecimal unitPrice;
-    private BigDecimal subtotal;
-    private BigDecimal individualDiscount;
-    private BigDecimal individualTaxes;
-    private BigDecimal subtotalWithDiscount;
-    private BigDecimal subtotalWithTaxes;
-    private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdated;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderEntity order;
+
+    @ManyToOne
+    private ProductEntity product;
 
     public OrderDetailEntity() {
     }
 
-    public OrderDetailEntity(int id, OrderEntity orderEntity, ProductEntity productEntity, int quantity, BigDecimal unitPrice, BigDecimal subtotal, BigDecimal individualDiscount, BigDecimal individualTaxes, BigDecimal subtotalWithDiscount, BigDecimal subtotalWithTaxes, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+    public OrderDetailEntity(Integer id, String name, double quantity, double price, double total, OrderEntity order, ProductEntity product) {
         this.id = id;
-        this.orderEntity = orderEntity;
-        this.productEntity = productEntity;
+        this.name = name;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
-        this.subtotal = subtotal;
-        this.individualDiscount = individualDiscount;
-        this.individualTaxes = individualTaxes;
-        this.subtotalWithDiscount = subtotalWithDiscount;
-        this.subtotalWithTaxes = subtotalWithTaxes;
-        this.dateCreated = dateCreated;
-        this.dateUpdated = dateUpdated;
+        this.price = price;
+        this.total = total;
+        this.order = order;
+        this.product = product;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public OrderEntity getOrderEntity() {
-        return orderEntity;
+    public String getName() {
+        return name;
     }
 
-    public void setOrderEntity(OrderEntity orderEntity) {
-        this.orderEntity = orderEntity;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ProductEntity getProductEntity() {
-        return productEntity;
-    }
-
-    public void setProductEntity(ProductEntity productEntity) {
-        this.productEntity = productEntity;
-    }
-
-    public int getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
-    public BigDecimal getUnitPrice() {
-        return unitPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setUnitPrice(BigDecimal unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public BigDecimal getSubtotal() {
-        return subtotal;
+    public double getTotal() {
+        return total;
     }
 
-    public void setSubtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
-    public BigDecimal getIndividualDiscount() {
-        return individualDiscount;
+    public OrderEntity getOrder() {
+        return order;
     }
 
-    public void setIndividualDiscount(BigDecimal individualDiscount) {
-        this.individualDiscount = individualDiscount;
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 
-    public BigDecimal getIndividualTaxes() {
-        return individualTaxes;
+    public ProductEntity getProduct() {
+        return product;
     }
 
-    public void setIndividualTaxes(BigDecimal individualTaxes) {
-        this.individualTaxes = individualTaxes;
-    }
-
-    public BigDecimal getSubtotalWithDiscount() {
-        return subtotalWithDiscount;
-    }
-
-    public void setSubtotalWithDiscount(BigDecimal subtotalWithDiscount) {
-        this.subtotalWithDiscount = subtotalWithDiscount;
-    }
-
-    public BigDecimal getSubtotalWithTaxes() {
-        return subtotalWithTaxes;
-    }
-
-    public void setSubtotalWithTaxes(BigDecimal subtotalWithTaxes) {
-        this.subtotalWithTaxes = subtotalWithTaxes;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public LocalDateTime getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(LocalDateTime dateUpdated) {
-        this.dateUpdated = dateUpdated;
+    public void setProduct(ProductEntity product) {
+        this.product = product;
     }
 
     @Override
     public String toString() {
-        return "OrderDetailEntity{" + "id=" + id + ", orderEntity=" + orderEntity + ", productEntity=" + productEntity + ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", subtotal=" + subtotal + ", individualDiscount=" + individualDiscount + ", individualTaxes=" + individualTaxes + ", subtotalWithDiscount=" + subtotalWithDiscount + ", subtotalWithTaxes=" + subtotalWithTaxes + ", dateCreated=" + dateCreated + ", dateUpdated=" + dateUpdated + '}';
+        return "OrderDetailEntity{" + "id=" + id + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", total=" + total + ", order=" + order + ", product=" + product + '}';
     }
 
 }
